@@ -25,6 +25,8 @@
  		http://stackoverflow.com/questions/9083856/in-java-how-would-i-add-a-string-to-a-string-variable |
  		http://beginnersbook.com/2013/12/java-arraylist-addint-index-e-element-example/					|
  		https://docs.oracle.com/javase/7/docs/api/javax/swing/JFileChooser.html							|
+ 		http://stackoverflow.com/questions/7075714/displaying-top-10-most-occuring-words-in-a-file-in-descending-order
+    ----------------------------------------------------------------------------------------------------
 */
 
 package com.assignment.java; //This is the name of the package this code is stored in
@@ -35,7 +37,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -131,15 +133,16 @@ public class MyScreen extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(this, "Scanning selected File.");
 				try 
 				{
+					//Calls fileWork method in FileMngr class
 					FileMngr.fileWork(myFile);
 				}//End try()
-				catch (IOException e1) 
+				catch (FileNotFoundException e1) 
 				{
 					// TODO Auto-generated catch block
 					//Displays the following message to screen
-					JOptionPane.showMessageDialog(this, "ERROR!: " + e1);
+					JOptionPane.showMessageDialog(this, "ERROR!");
 				}//End catch()
-				break; //Exits case:"1"
+				break; //Exits case:"2"
 		}//End switch statement
 	}//End ActionPerformed
 }//End MyScreen

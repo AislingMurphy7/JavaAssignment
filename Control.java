@@ -11,7 +11,7 @@
  	----------------------------------------------------------------------------------------------------|
  	~ This class is the control class.																	|
  	~ This class contains the code that creates the screen that will display.							|
- 	~ Also contains the code that sets the size of the screen and the location of the new screen 		|
+ 	~ Also contains the code that sets the size of the window and the location of the window	 		|
  	  on the computer screen.																			|
  	-----------------------------------------------------------------------------------------------------
 */

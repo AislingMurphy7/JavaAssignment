@@ -20,17 +20,15 @@
 
 package com.assignment.java; //This is the name of the package this code is stored in.
 
-import java.awt.Dimension;
 //My import functions.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FileMngr 
 {//Start
@@ -46,13 +44,13 @@ public class FileMngr
 	public static void fileWork(File myFile2)throws FileNotFoundException
 	{
 		Scanner inputScan = new Scanner(myFile2); //Scans the file for input
+		
 		int search; //Variable to search for the words
 		String keep; //Variable to keep the words
 		boolean newWord; //Adds new words
 		
 		//loads just the first word from the file in to get started
 		keep = inputScan.next(); //Read in the word
-		keep = keep.replaceAll("[^a-zA-Z]+", ""); //Changes everything except the letters
 		keep = keep.toLowerCase(); //All upper case are converted to lower case
 		wordCount.add(1); //Adds to the word count
 		textWords.add(keep); //Adds word to the textWord to keep
@@ -62,9 +60,9 @@ public class FileMngr
 		{
 			newWord = true; //True because there is more words
 			search = 0; //Search is set to 0, word may not be in file
+			int val; //Variable to hold the count of words
 			
 			keep = inputScan.next(); //Reads in the word
-			keep = keep.replaceAll("a-zA-Z0-9]+", ""); //Changes everything except the letters
 			keep = keep.toLowerCase(); //All upper case are converted to lower case
 			
 			//Goes through the words array list
@@ -73,7 +71,7 @@ public class FileMngr
 				//if the word is found somewhere in the ArrayList, increment and say that it was found
 				if (string.equals(keep))
 				{
-					int val = wordCount.get(search);
+					val = wordCount.get(search);
 					val++;
 					wordCount.set(search, val);
 					newWord = false;
@@ -82,7 +80,7 @@ public class FileMngr
 				search++; //moves on to the next
 			}//End for()
 			
-			//Adds found words to the Array list
+			//Adds new found words to the Array list
 			if (newWord)
 			{
 				textWords.add(keep); //Adds word to the array list
@@ -90,18 +88,32 @@ public class FileMngr
 			}//End if()
 		}//End while()
 		
-		StringBuilder list = new StringBuilder(" ");
+		Collections.sort(wordCount, Collections.reverseOrder());
+		int last_i = -1;
+		
+		for(Integer i : wordCount.subList(0,9))
+		{
+			if(last_i == i)
+				continue;
+			last_i = i;
+		}
+		
+		StringBuilder list = new StringBuilder(); 
 	
 		//This for loop scans the size of the word
 		for (int i = 0; i<textWords.size(); i++)
 		{
 			//Joins the the textWords array list with the wordCount array list
 			list.append(textWords.get(i) + " (" + wordCount.get(i) +  ")\n\t"); 
+			
 		}//End for()
 		
 		//Displays the following messages on screen
 		JOptionPane.showMessageDialog(null, "Results from Scan.");
 		JOptionPane.showMessageDialog(null, "Press ok to view results.");
+		//Prints the array List containing the results of the scan
+		//Displays how many times a word it displayed
+		
 		JOptionPane.showMessageDialog(null, list.toString());
 
 		inputScan.close(); //Close the scanning process
