@@ -26,6 +26,5 @@ public class Control
 		MyScreen newScreen = new MyScreen("Robo Reader");
 		newScreen.setSize(500,500); //Sets the size of the new screen.
 		newScreen.setLocation(470,120); //Sets the location of the new screen of the screen.
-		newScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Sets the close operation.
 	}
 }
