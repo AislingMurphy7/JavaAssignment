@@ -25,7 +25,6 @@
  		http://stackoverflow.com/questions/9083856/in-java-how-would-i-add-a-string-to-a-string-variable |
  		http://beginnersbook.com/2013/12/java-arraylist-addint-index-e-element-example/					|
  		https://docs.oracle.com/javase/7/docs/api/javax/swing/JFileChooser.html							|
- 		http://stackoverflow.com/questions/7075714/displaying-top-10-most-occuring-words-in-a-file-in-descending-order
     ----------------------------------------------------------------------------------------------------
 */
 
