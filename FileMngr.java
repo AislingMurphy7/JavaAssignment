@@ -81,7 +81,6 @@ public class FileMngr
 			}
 		}
 		
-		int line = 0;
 		StringBuilder list = new StringBuilder(" ");
 		
 		//print results
@@ -89,20 +88,15 @@ public class FileMngr
 		//This for loop scans the size of the word
 		for (int i = 0; i<textWords.size(); i++)
 		{
-			list.append(textWords.get(i) + ":" + wordCount.get(i) +  "\n\t");
-			line++;
-			
-			if(line > 2)
-			{
-				line = 0;
-			}
+			//Joins the the textWords arraylist with the wordCount arraylist
+			list.append(textWords.get(i) + ": " + wordCount.get(i) +  "\n\t"); 
 		}
-		list.append(" ");
 		
+		//Displays on screen
 		JOptionPane.showMessageDialog(null, "Results from Scan!\n Press OK");
 		JOptionPane.showMessageDialog(null, list.toString());
 		
-		inputScan.close();
+		inputScan.close(); //Close the scanning process
 		
 	}
 }
