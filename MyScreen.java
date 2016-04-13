@@ -77,8 +77,51 @@ public class MyScreen extends JFrame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		// TODO Auto-generated method stub
+		String Action = e.getActionCommand();
 		
+		FileMngr FileManager = new FileMngr();
 		
+		switch(Action)
+		{
+			//Browse Button
+			case "1":
+				//Takes path and places it in text box
+				JFileChooser path = new JFileChooser();
+				FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+				path.setFileFilter(txtFilter);
+				int value = path.showOpenDialog(this);
+				if (value == JFileChooser.APPROVE_OPTION)
+				{
+					myFile = path.getSelectedFile();
+					text.setText(myFile.getName());
+					JOptionPane.showMessageDialog(this, "Opening File! ");
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(this, "Process has been Terminated.");
+				}
+				break;
+			
+			//Scan button
+			case "2":
+				JOptionPane.showMessageDialog(this, "Scanning File");
+				FileMngr file = new FileMngr();
+				try 
+				{
+					textWords.clear();
+					wordCount.clear();
+					list.clear();
+					
+					FileMngr.fileRead(myFile);
+				}
+				catch (IOException e1) 
+				{
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(this, "ERROR!: " + e1);
+				}
+				break;
+		}
 	}
 
 }
