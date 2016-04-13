@@ -114,7 +114,7 @@ public class MyScreen extends JFrame implements ActionListener
 					//Gets the selected file and places it in myFile
 					myFile = jFC.getSelectedFile(); 
 					//Gets the name of the file and places it in the text field box
-					text.setText(myFile.getName()); 
+					text.setText(myFile.getName());
 					//Displays the following messages
 					JOptionPane.showMessageDialog(this, "Opening File.");
 					JOptionPane.showMessageDialog(this, "Press 'Scan files' to continue.");

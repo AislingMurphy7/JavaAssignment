@@ -18,7 +18,7 @@
 
 package com.assignment.java; //This is the name of the package this code is stored in.
 
-public class Control 
+public class Control
 {
 	public static void main(String[] args)
 	{
