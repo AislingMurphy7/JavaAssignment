@@ -1,15 +1,25 @@
-/*
- 	Aisling Murphy 
- 	C14343571       
- 	Java Assignment 
-    ----------------------------------------------------------------------------------------------------  
- 	Robo-Reader 
- 	~ This program is a program written in Java. The program uses user input to get a file from the user
- 	  by using the browse button. the user selects the file they wish to open and the program opens the 
- 	  file and reads it. It then scans the file the user has selected and counts the most common 
- 	  words within the file and displays them.
+/* -----------------------------------------------------------------------------------------------------
+   	Aisling Murphy 																						|
+   	C14343571       																					|
+ 	Java Assignment 																					|
+    ----------------------------------------------------------------------------------------------------|  
+ 	Robo-Reader 																						|
+ 	~ This program is a program written in Java. The program uses user input to get a file from the 	|
+ 	  user by using the browse button. the user selects the file they wish to open and the program 		|
+ 	  opens the	file and reads it. It then scans the file the user has selected and counts the most		|
+ 	  common words within the file and displays them.													|
+ 	----------------------------------------------------------------------------------------------------|
+ 	~ This class creates and display the GUI.															|
+ 	~ There is a Switch statement which i used to differentiate between the two buttons, 				|
+ 	  (Scan button, Browse button)																		|
+ 	~ Within the switch statement there are two Cases, Case: "1" and Case: "2". 						|
+ 	~ Case:"1", is the Browse button, this allows the user to browse their files and 					|
+ 	  select the file they would like to open. it only allows certain types of files to 				|
+ 	  be opened. It then retrieves the file and opens it.												|
+ 	~ Case:"2", is the scan button, when this is pressed the fileRead() function is called				|
+ 	  from the FileMngr class which scans the file. If the file can not be found an error 				|
+ 	  message is displayed.																				|
  	-----------------------------------------------------------------------------------------------------
- 	
 */
 
 package com.assignment.java; //This is the name of the package this code is stored in
@@ -21,7 +31,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -37,7 +46,7 @@ public class MyScreen extends JFrame implements ActionListener
 	JTextField text; //Text box
 	JButton button, browse; //Scan button, Browse button.
 	JLabel Label, Label1; //Text
-	File myFile;
+	File myFile; //when scanning a file myFile is needed
 	
 	public MyScreen(String title)
 	{
@@ -75,14 +84,12 @@ public class MyScreen extends JFrame implements ActionListener
 		button.setActionCommand("2"); //Scan button will be set to Case: "2"
 		
 		setVisible(true); //Allows the screen to display.
-	}
+	}//End MyScreen
 
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
 		// TODO Auto-generated method stub
-		
-		FileMngr FileManager = new FileMngr(); //Call FileMngr class
 		String Action = e.getActionCommand();
 		
 		switch(Action)
@@ -99,38 +106,36 @@ public class MyScreen extends JFrame implements ActionListener
 				{
 					//Gets the selected file and places it in myFile
 					myFile = path.getSelectedFile(); 
-					//Gets the name of the file and places it in the textfield box
+					//Gets the name of the file and places it in the text field box
 					text.setText(myFile.getName()); 
 					//Displays the following messages
-					JOptionPane.showMessageDialog(this, "Opening File. ");
-					JOptionPane.showMessageDialog(this, "Please press 'Scan files' now. ");
-					
-				}
+					JOptionPane.showMessageDialog(this, "Opening File.");
+					JOptionPane.showMessageDialog(this, "Please press 'Scan files' now.");
+				}//End if()
 				else
 				{
 					//Displays the following message if the file cant be found
 					JOptionPane.showMessageDialog(this, "Process has been Terminated.");
-				}
+				}//End else()
 				break; //Exits case:"1"
 			
 			//Scan button
 			case "2":
 			//If the user select the scan button the following takes place
 				//Display the following message to screen
-				JOptionPane.showMessageDialog(this, "Scanning selected File\n Press OK.");
+				JOptionPane.showMessageDialog(this, "Scanning selected File.");
 				try 
 				{
 					FileMngr.fileRead(myFile);
-				}
+				}//End try()
 				catch (IOException e1) 
 				{
 					// TODO Auto-generated catch block
 					//Displays the following message to screen
 					JOptionPane.showMessageDialog(this, "ERROR!: " + e1);
-				}
+				}//End catch()
 				break; //Exits case:"1"
-		}
-	}
-
-}
+		}//End switch statement
+	}//End ActionPerformed
+}//End MyScreen
 

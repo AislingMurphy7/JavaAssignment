@@ -17,7 +17,6 @@ package com.assignment.java; //This is the name of the package this code is stor
 //My import functions.
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -27,9 +26,9 @@ import java.util.ArrayList;
 public class FileMngr 
 {//Start
 	
-	//wordCount holds the number of certain words in the file in the Arraylist
+	//wordCount holds the number of certain words in the file in the Array list
 	static ArrayList<Integer> wordCount = new ArrayList<Integer>();
-	//textWords holds the words from the file in the Arraylist
+	//textWords holds the words from the file in the Array list
 	static ArrayList<String> textWords = new ArrayList<String>();
 	//list holds the scan results
 	static ArrayList<String> list = new ArrayList<String>();
@@ -59,7 +58,7 @@ public class FileMngr
 			keep = keep.replaceAll("a-zA-Z0-9]+", ""); //Changes everything except the letters
 			keep = keep.toLowerCase(); //All upper case are converted to lower case
 			
-			//Goes through the words arraylist
+			//Goes through the words array list
 			for  (String string : textWords)
 			{
 				//if the word is found somewhere in the ArrayList, increment and say that it was found
@@ -69,35 +68,34 @@ public class FileMngr
 					val++;
 					wordCount.set(search, val);
 					newWord = false;
-				}
+				}//End if()
+				
 				search++; //moves on to the next
-			}
+			}//End for()
 			
 			//Adds found words to the Arrayist
 			if (newWord)
 			{
 				textWords.add(keep); //Adds word to the arraylist
 				wordCount.add(1); //Adds one to the word it has found
-			}
-		}
+			}//End if()
+		}//End while()
 		
 		StringBuilder list = new StringBuilder(" ");
-		
-		//print results
-		
+	
 		//This for loop scans the size of the word
 		for (int i = 0; i<textWords.size(); i++)
 		{
-			//Joins the the textWords arraylist with the wordCount arraylist
+			//Joins the the textWords array list with the wordCount array list
 			list.append(textWords.get(i) + ": " + wordCount.get(i) +  "\n\t"); 
-		}
+		}//End for()
 		
-		//Displays on screen
-		JOptionPane.showMessageDialog(null, "Results from Scan!\n Press OK");
+		//Displays the following messages on screen
+		JOptionPane.showMessageDialog(null, "Results from Scan!\nPress OK");
 		JOptionPane.showMessageDialog(null, list.toString());
 		
 		inputScan.close(); //Close the scanning process
 		
-	}
-}
+	}//End fileRead
+}//End FileMngr
 
