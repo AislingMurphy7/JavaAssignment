@@ -53,18 +53,18 @@ public class MyScreen extends JFrame implements ActionListener
 	JTextField text; //Text box
 	JButton button, browse; //Scan button, Browse button.
 	JLabel label, label1; //Text
-	File myFile; //when scanning a file myFile is needed
+	File myFile; //When scanning a file myFile is needed
 	
 	public MyScreen(String title)
 	{
 		super(title); //Title for the screen
 		setLayout(new FlowLayout()); //Sets the Layout of the screen
 		
-		//Will add the label and will display the message on the screen
-		label = new JLabel("Welcome to Robo-Reader.     ");
+		//Adds the label and displays the message on the screen
+		label = new JLabel("Welcome to Robo-Reader.    ");
 		add(label); //Add the label to the screen
 		
-		//Will display the message on screen.
+		//Adds the label and displays the message on screen.
 		label1 = new JLabel("Please Select a File that you would like to search.");
 		add(label1); //Add the label to the screen
 		
@@ -79,7 +79,7 @@ public class MyScreen extends JFrame implements ActionListener
 		browse.addActionListener(this); //Action listener is add to the button
 		add(browse); //Add the button to the screen
 		
-		// button will allow the user to scan a certain file
+		//(Scan)Button will allow the user to scan a certain file
 		button = new JButton("Scan Files");
 		button.addActionListener(this); //Action listener is add to the button
 		add(button); //Add the button to the screen
