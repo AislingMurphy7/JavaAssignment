@@ -23,7 +23,7 @@ file.
 My Program is made up of a control class called Control, A GUI class called MyScreen and a file manager class called FileMngr.
 
 The MyScreen class implements the buttons and textfield. 
-I had to implement a switch statement because i had two action listners on my Browse button and on my scan button. 
+I had to implement a switch statement because I had two action listners on my Browse button and on my scan button. 
 I needed to differentiate between them because obviously they do different things in the program. 
 
 The Control class simply sets the size and the location of the GUI on screen.
