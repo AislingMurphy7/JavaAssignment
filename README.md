@@ -29,5 +29,5 @@ I needed to differentiate between them because obviously they do different thing
 The Control class simply sets the size and the location of the GUI on screen.
 
 The FileMngr class contains all the code that is needed to read file and to scan the file for words, which in turn counts the number
-of repeated words. This class also displays the results to the user.
+of repeated words. This class also displays the results to the user. I also attempted to sort the words from most popular to least popular in this class.
 
