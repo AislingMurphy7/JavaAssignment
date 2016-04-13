@@ -1,3 +1,17 @@
+/*
+ 	Aisling Murphy 
+ 	C14343571       
+ 	Java Assignment 
+    ----------------------------------------------------------------------------------------------------  
+ 	Robo-Reader 
+ 	~ This program is a program written in Java. The program uses user input to get a file from the user
+ 	  by using the browse button. the user selects the file they wish to open and the program opens the 
+ 	  file and reads it. It then scans the file the user has selected and counts the most common 
+ 	  words within the file and displays them.
+ 	-----------------------------------------------------------------------------------------------------
+ 	
+*/
+
 package com.assignment.java;
 import java.io.File;
 import java.io.FileNotFoundException;
