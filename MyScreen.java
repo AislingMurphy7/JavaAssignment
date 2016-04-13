@@ -20,6 +20,11 @@
  	  from the FileMngr class which scans the file. If the file can not be found an error 				|
  	  message is displayed.																				|
  	-----------------------------------------------------------------------------------------------------
+ 	~Links to websites I used to help me with this assignment:											|
+ 																										|
+ 		http://stackoverflow.com/questions/9083856/in-java-how-would-i-add-a-string-to-a-string-variable |
+ 		http://beginnersbook.com/2013/12/java-arraylist-addint-index-e-element-example/					|
+ 		https://docs.oracle.com/javase/7/docs/api/javax/swing/JFileChooser.html							|
 */
 
 package com.assignment.java; //This is the name of the package this code is stored in
@@ -45,7 +50,7 @@ public class MyScreen extends JFrame implements ActionListener
 	
 	JTextField text; //Text box
 	JButton button, browse; //Scan button, Browse button.
-	JLabel Label, Label1; //Text
+	JLabel label, label1; //Text
 	File myFile; //when scanning a file myFile is needed
 	
 	public MyScreen(String title)
@@ -54,16 +59,16 @@ public class MyScreen extends JFrame implements ActionListener
 		setLayout(new FlowLayout()); //Sets the Layout of the screen
 		
 		//Will add the label and will display the message on the screen
-		Label = new JLabel("Welcome to Robo-Reader!");
-		add(Label); //Add the label to the screen
+		label = new JLabel("Welcome to Robo-Reader.     ");
+		add(label); //Add the label to the screen
 		
 		//Will display the message on screen.
-		Label1 = new JLabel("Please Select a File that you would like to search!");
-		add(Label1); //Add the label to the screen
+		label1 = new JLabel("Please Select a File that you would like to search.");
+		add(label1); //Add the label to the screen
 		
 		//Text field will get the file name and place it here
 		//"File Name" will be displayed in the text box when the program first runs
-		text = new JTextField("File Name");
+		text = new JTextField("File Name...");
 		text.setPreferredSize(new Dimension(200,30)); //Sets the size of the text box
 		add(text); //Add the text box to the screen
 	
@@ -90,31 +95,31 @@ public class MyScreen extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		// TODO Auto-generated method stub
-		String Action = e.getActionCommand();
+		String action = e.getActionCommand();
 		
-		switch(Action)
+		switch(action)
 		{
 			//Browse Button
 			case "1":
 			//If user select the browse button then the following takes place
-				JFileChooser path = new JFileChooser();
+				JFileChooser jFC = new JFileChooser();
 				//allows only TEXT FILES, txt or doc files only.
 				FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("TEXT FILES", "txt", "doc");
-				path.setFileFilter(txtFilter); //Filters out the files that are not allowed
-				int value = path.showOpenDialog(this);
+				jFC.setFileFilter(txtFilter); //Filters out the files that are not allowed
+				int value = jFC.showOpenDialog(this);
 				if (value == JFileChooser.APPROVE_OPTION)
 				{
 					//Gets the selected file and places it in myFile
-					myFile = path.getSelectedFile(); 
+					myFile = jFC.getSelectedFile(); 
 					//Gets the name of the file and places it in the text field box
 					text.setText(myFile.getName()); 
 					//Displays the following messages
 					JOptionPane.showMessageDialog(this, "Opening File.");
-					JOptionPane.showMessageDialog(this, "Please press 'Scan files' now.");
+					JOptionPane.showMessageDialog(this, "Press 'Scan files' to continue.");
 				}//End if()
 				else
 				{
-					//Displays the following message if the file cant be found
+					//Displays the following message if the file can't be found
 					JOptionPane.showMessageDialog(this, "Process has been Terminated.");
 				}//End else()
 				break; //Exits case:"1"
@@ -126,7 +131,7 @@ public class MyScreen extends JFrame implements ActionListener
 				JOptionPane.showMessageDialog(this, "Scanning selected File.");
 				try 
 				{
-					FileMngr.fileRead(myFile);
+					FileMngr.fileWork(myFile);
 				}//End try()
 				catch (IOException e1) 
 				{

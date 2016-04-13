@@ -14,18 +14,21 @@
  	  they select it from the browse button.															|
  	~ The fileRead method also scans the file and counts the number of times a 							|
  	  is in the text file that is selected.																|
- 	~ The results are then displayed on the screen for the user to see.								|
+ 	~ The results are then displayed on the screen for the user to see.									|
  	-----------------------------------------------------------------------------------------------------
 */
 
 package com.assignment.java; //This is the name of the package this code is stored in.
 
+import java.awt.Dimension;
 //My import functions.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 
 import java.util.ArrayList;
 
@@ -39,8 +42,8 @@ public class FileMngr
 	//list holds the scan results
 	static ArrayList<String> list = new ArrayList<String>();
 	
-	//FileRead method
-	public static void fileRead(File myFile2)throws FileNotFoundException
+	//FileWork method
+	public static void fileWork(File myFile2)throws FileNotFoundException
 	{
 		Scanner inputScan = new Scanner(myFile2); //Scans the file for input
 		int search; //Variable to search for the words
@@ -79,10 +82,10 @@ public class FileMngr
 				search++; //moves on to the next
 			}//End for()
 			
-			//Adds found words to the Arrayist
+			//Adds found words to the Array list
 			if (newWord)
 			{
-				textWords.add(keep); //Adds word to the arraylist
+				textWords.add(keep); //Adds word to the array list
 				wordCount.add(1); //Adds one to the word it has found
 			}//End if()
 		}//End while()
@@ -93,15 +96,15 @@ public class FileMngr
 		for (int i = 0; i<textWords.size(); i++)
 		{
 			//Joins the the textWords array list with the wordCount array list
-			list.append(textWords.get(i) + ": " + wordCount.get(i) +  "\n\t"); 
+			list.append(textWords.get(i) + " (" + wordCount.get(i) +  ")\n\t"); 
 		}//End for()
 		
 		//Displays the following messages on screen
-		JOptionPane.showMessageDialog(null, "Results from Scan!\nPress OK");
+		JOptionPane.showMessageDialog(null, "Results from Scan.");
+		JOptionPane.showMessageDialog(null, "Press ok to view results.");
 		JOptionPane.showMessageDialog(null, list.toString());
-		
+
 		inputScan.close(); //Close the scanning process
-		
 	}//End fileRead
 }//End FileMngr
 

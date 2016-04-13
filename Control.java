@@ -18,15 +18,10 @@
 
 package com.assignment.java; //This is the name of the package this code is stored in.
 
-//My import functions.
-import javax.swing.JFrame;
-
-//Start
 public class Control 
 {
 	public static void main(String[] args)
 	{
-		//Creates a new screen to display. 
 		MyScreen newScreen = new MyScreen("Robo Reader");
 		newScreen.setSize(500,500); //Sets the size of the new screen.
 		newScreen.setLocation(470,120); //Sets the location of the new screen of the screen.
