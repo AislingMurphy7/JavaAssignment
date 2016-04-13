@@ -12,8 +12,9 @@
  	
 */
 
-package com.assignment.java;
+package com.assignment.java; //This is the name of the package this code is stored in
 
+//My import functions
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -32,10 +33,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MyScreen extends JFrame implements ActionListener
 {
-	
-	static ArrayList<Integer> wordCount = new ArrayList<Integer>();
-	static ArrayList<String> textWords = new ArrayList<String>();
-	static ArrayList<String> list = new ArrayList<String>();
 	
 	JTextField text; //Text box
 	JButton button, browse; //Scan button, Browse button.
@@ -84,49 +81,54 @@ public class MyScreen extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		// TODO Auto-generated method stub
-		String Action = e.getActionCommand();
 		
-		FileMngr FileManager = new FileMngr();
+		FileMngr FileManager = new FileMngr(); //Call FileMngr class
+		String Action = e.getActionCommand();
 		
 		switch(Action)
 		{
 			//Browse Button
 			case "1":
-				//Takes path and places it in text box
+			//If user select the browse button then the following takes place
 				JFileChooser path = new JFileChooser();
-				FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
-				path.setFileFilter(txtFilter);
+				//allows only TEXT FILES, txt or doc files only.
+				FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("TEXT FILES", "txt", "doc");
+				path.setFileFilter(txtFilter); //Filters out the files that are not allowed
 				int value = path.showOpenDialog(this);
 				if (value == JFileChooser.APPROVE_OPTION)
 				{
-					myFile = path.getSelectedFile();
-					text.setText(myFile.getName());
-					JOptionPane.showMessageDialog(this, "Opening File! ");
+					//Gets the selected file and places it in myFile
+					myFile = path.getSelectedFile(); 
+					//Gets the name of the file and places it in the textfield box
+					text.setText(myFile.getName()); 
+					//Displays the following messages
+					JOptionPane.showMessageDialog(this, "Opening File. ");
+					JOptionPane.showMessageDialog(this, "Please press 'Scan files' now. ");
+					
 				}
 				else
 				{
+					//Displays the following message if the file cant be found
 					JOptionPane.showMessageDialog(this, "Process has been Terminated.");
 				}
-				break;
+				break; //Exits case:"1"
 			
 			//Scan button
 			case "2":
-				JOptionPane.showMessageDialog(this, "Scanning File");
-				FileMngr file = new FileMngr();
+			//If the user select the scan button the following takes place
+				//Display the following message to screen
+				JOptionPane.showMessageDialog(this, "Scanning selected File\n Press OK.");
 				try 
 				{
-					textWords.clear();
-					wordCount.clear();
-					list.clear();
-					
 					FileMngr.fileRead(myFile);
 				}
 				catch (IOException e1) 
 				{
 					// TODO Auto-generated catch block
+					//Displays the following message to screen
 					JOptionPane.showMessageDialog(this, "ERROR!: " + e1);
 				}
-				break;
+				break; //Exits case:"1"
 		}
 	}
 
